@@ -1,10 +1,5 @@
-:root {
-  --primary-color: #444;
-  --primary-color-light: #555;
-  --secondary-color: #eece1a;
-  --background-opacity: 0.9;
-  --home-image: url(../img/background.png);
-}
+@import 'config.css';
+@import 'menu.css';
 
 * {
   box-sizing: border-box;
@@ -81,6 +76,7 @@ main {
 
     main .icons a {
       padding: 0.4rem;
+      font-size: 1.5rem;
     }
 
       main .icons a:hover {

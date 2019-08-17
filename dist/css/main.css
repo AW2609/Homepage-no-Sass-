@@ -1,5 +1,7 @@
 @import 'config.css';
 @import 'menu.css';
+@import 'mobile.css';
+
 
 * {
   box-sizing: border-box;
@@ -91,3 +93,4 @@ main {
     main#home h1 {
       margin-top: 20vh;
     }
+

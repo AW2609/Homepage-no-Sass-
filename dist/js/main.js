@@ -1,4 +1,7 @@
 function init() {
+    // load home content
+    loadPage(document.querySelector('.nav-item.current'), 'home.html');
+
     // Select DOM Items
     const menuBtn = document.querySelector('.menu-btn');
     const menu = document.querySelector('.menu');
@@ -38,3 +41,67 @@ function init() {
     }
 }
 
+function switchTheme(themeBtn, themeColor) {
+    const cssVariables = document.getElementById('mainCss').sheet.cssRules[0].styleSheet.cssRules[0];
+    const root = document.documentElement;
+    const themeButtons = document.querySelectorAll('.theme-btn');
+
+    themeBtn.classList.add('theme-current');
+    for (let i = 0; i < themeButtons.length; i++) {
+        if (themeButtons[i] !== themeBtn) {
+            themeButtons[i].classList.remove('theme-current')
+        }
+    }
+
+    root.style.setProperty('--primary-color', themeColor);
+
+    if (themeColor == '#444') {
+        // dark theme
+        root.style.setProperty('--primary-color-light', '#555');
+        root.style.setProperty('--primary-color-dark', '#333');
+        root.style.setProperty('--primary-letter-color', '#fff');
+        root.style.setProperty('--secondary-color', '#eece1a');
+    } else if (themeColor == '#036') {
+        // nightblue theme
+        root.style.setProperty('--primary-color-light', '#147');
+        root.style.setProperty('--primary-color-dark', '#025');
+        root.style.setProperty('--primary-letter-color', '#fff');
+        root.style.setProperty('--secondary-color', '#eece1a');
+    } else {
+        // light theme
+        root.style.setProperty('--primary-color-light', '#fff');
+        root.style.setProperty('--primary-color-dark', '#d4d4d4');
+        root.style.setProperty('--primary-letter-color', '#111');
+        root.style.setProperty('--secondary-color', '#147');
+    }
+}
+
+function loadPage(currentLink, page) {
+    let http = new XMLHttpRequest();
+
+    http.onload = function () {
+        // paste response html
+        document.querySelector('.wrapper').innerHTML = this.response;
+
+        // remove background image if not home content
+        if (page == 'home.html') {
+            document.body.classList.add('bg-image');
+        } else {
+            document.body.classList.remove('bg-image');
+        }
+
+        // remove current navLink & toggle menu button if page is not loaded the first time
+        let menuBtn = document.querySelector('.menu-btn');
+        if (menuBtn.classList.contains('close')) {
+            let clickEvent = new Event('click');
+            menuBtn.dispatchEvent(clickEvent);
+            document.querySelector('.nav-item.current').classList.remove('current');
+        }
+
+        // switch current navLink
+        currentLink.classList.add('current');
+    }
+
+    http.open('get', page, true);
+    http.send()
+}

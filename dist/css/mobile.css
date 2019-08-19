@@ -41,6 +41,26 @@
         max-width: 200px;
     }
 
+    .about-info {
+        grid-template-areas: 
+            'bioimage'
+            'bio'
+            'job1'
+            'job2'
+            'job3';
+        
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media screen and (min-width: 769px) {
+    .about-info {
+        grid-template-areas: 
+            'bioimage bio bio'
+            'job1 job2 job3';
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {

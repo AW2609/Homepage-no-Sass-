@@ -13,7 +13,7 @@
         width: 28px; 
         height: 3px; 
         margin: 0 0 5px 0; 
-        background: #fff;
+        background: var(--primary-letter-color);
         transition: all 0.5s ease-out;
     }
 
@@ -112,8 +112,8 @@
         font-size: 1.3rem; 
         text-transform: uppercase;
         padding: 1rem 0; 
-        font-weight: 350; 
-        color: #fff;
+        font-weight: 450; 
+        color: var(--primary-letter-color);
         text-decoration: none;
         transition: all 0.5s ease-out;
     }

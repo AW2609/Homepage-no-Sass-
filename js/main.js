@@ -91,7 +91,6 @@ function loadPage(currentLink, page) {
         // remove background image if not home content
         // highlight theme button
         if (page == 'home.html') {
-            console.log(currentThemeBtn);
             document.body.classList.add('bg-image');
             if (currentThemeBtn !== null) {
                 let themeBtn = document.querySelector('.' + currentThemeBtn.classList[1]);
@@ -100,19 +99,18 @@ function loadPage(currentLink, page) {
             } else {
                 document.body.classList.remove('bg-image');
             }
-
-
-            // remove current navLink & toggle menu button if page is not loaded the first time
-            let menuBtn = document.querySelector('.menu-btn');
-            if (menuBtn.classList.contains('close')) {
-                let clickEvent = new Event('click');
-                menuBtn.dispatchEvent(clickEvent);
-                document.querySelector('.nav-item.current').classList.remove('current');
-            }
-
-            // switch current navLink
-            currentLink.classList.add('current');
         }
+
+        // remove current navLink & toggle menu button if page is not loaded the first time
+        let menuBtn = document.querySelector('.menu-btn');
+        if (menuBtn.classList.contains('close')) {
+            let clickEvent = new Event('click');
+            menuBtn.dispatchEvent(clickEvent);
+            document.querySelector('.nav-item.current').classList.remove('current');
+        }
+
+        // switch current navLink
+        currentLink.classList.add('current');
     }
 
     http.open('get', page, true);

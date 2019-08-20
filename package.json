@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Homepage",
   "main": "index.js",
-  "homepage": "https://AW2609.github.io/Homepage-no-Sass-",
+  "homepage": "https://AW2609.github.io/homepage",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "gh-pages -d dist"

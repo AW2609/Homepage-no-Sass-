@@ -1,3 +1,5 @@
+let currentThemeBtn = null;
+
 function init() {
     // load home content
     loadPage(document.querySelector('.nav-item.current'), 'home.html');
@@ -42,7 +44,7 @@ function init() {
 }
 
 function switchTheme(themeBtn, themeColor) {
-    const cssVariables = document.getElementById('mainCss').sheet.cssRules[0].styleSheet.cssRules[0];
+    currentThemeBtn = themeBtn;
     const root = document.documentElement;
     const themeButtons = document.querySelectorAll('.theme-btn');
 
@@ -86,26 +88,34 @@ function loadPage(currentLink, page) {
 
         // paste response html
         document.querySelector('.wrapper').innerHTML = this.response;
-
         // remove background image if not home content
+        // highlight theme button
         if (page == 'home.html') {
+            console.log(currentThemeBtn);
             document.body.classList.add('bg-image');
-        } else {
-            document.body.classList.remove('bg-image');
-        }
+            if (currentThemeBtn !== null) {
+                let themeBtn = document.querySelector('.' + currentThemeBtn.classList[1]);
+                let themeEvent = new Event('click');
+                themeBtn.dispatchEvent(themeEvent);
+            } else {
+                document.body.classList.remove('bg-image');
+            }
 
-        // remove current navLink & toggle menu button if page is not loaded the first time
-        let menuBtn = document.querySelector('.menu-btn');
-        if (menuBtn.classList.contains('close')) {
-            let clickEvent = new Event('click');
-            menuBtn.dispatchEvent(clickEvent);
-            document.querySelector('.nav-item.current').classList.remove('current');
-        }
 
-        // switch current navLink
-        currentLink.classList.add('current');
+            // remove current navLink & toggle menu button if page is not loaded the first time
+            let menuBtn = document.querySelector('.menu-btn');
+            if (menuBtn.classList.contains('close')) {
+                let clickEvent = new Event('click');
+                menuBtn.dispatchEvent(clickEvent);
+                document.querySelector('.nav-item.current').classList.remove('current');
+            }
+
+            // switch current navLink
+            currentLink.classList.add('current');
+        }
     }
 
     http.open('get', page, true);
     http.send()
+
 }

@@ -68,7 +68,7 @@ function switchTheme(themeBtn, themeColor) {
         root.style.setProperty('--primary-color-dark', '#025');
         root.style.setProperty('--primary-letter-color', '#fff');
         root.style.setProperty('--secondary-color', '#eece1a');
-        root.style.setProperty('--secondary-color', '#111');
+        root.style.setProperty('--secondary-letter-color', '#111');
     } else {
         // light theme
         root.style.setProperty('--primary-color-light', '#f4f4f4');

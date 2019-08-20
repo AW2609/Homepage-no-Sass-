@@ -2,9 +2,13 @@
     main#home h1 {
         margin-top: 10vh;
     }
+
+    .projects {
+        grid-template-columns: 1fr
+    }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 501px) and (max-width: 768px) {
     main {
         align-items: center; 
         text-align: center;
@@ -52,21 +56,27 @@
         grid-template-columns: 1fr;
     }
 
+    .projects {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 769px) and (max-width: 1170px) {
     .about-info {
         grid-template-areas: 
             'bioimage bio bio'
             'job1 job2 job3';
         grid-template-columns: repeat(3, 1fr);
     }
-}
 
-@media screen and (min-width: 769px) and (max-width: 1170px) {
-
+    .projects {
+        grid-template-columns: repeat(3, 1fr); 
+    }
 }
 
 @media screen and (min-width: 1171px) {
-
+    .projects {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }

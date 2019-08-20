@@ -61,18 +61,21 @@ function switchTheme(themeBtn, themeColor) {
         root.style.setProperty('--primary-color-dark', '#333');
         root.style.setProperty('--primary-letter-color', '#fff');
         root.style.setProperty('--secondary-color', '#eece1a');
+        root.style.setProperty('--secondary-letter-color', '#111');
     } else if (themeColor == '#036') {
         // nightblue theme
         root.style.setProperty('--primary-color-light', '#147');
         root.style.setProperty('--primary-color-dark', '#025');
         root.style.setProperty('--primary-letter-color', '#fff');
         root.style.setProperty('--secondary-color', '#eece1a');
+        root.style.setProperty('--secondary-color', '#111');
     } else {
         // light theme
-        root.style.setProperty('--primary-color-light', '#fff');
-        root.style.setProperty('--primary-color-dark', '#d4d4d4');
+        root.style.setProperty('--primary-color-light', '#f4f4f4');
+        root.style.setProperty('--primary-color-dark', '#d0d0d0');
         root.style.setProperty('--primary-letter-color', '#111');
         root.style.setProperty('--secondary-color', '#147');
+        root.style.setProperty('--secondary-letter-color', '#fff');
     }
 }
 
@@ -80,6 +83,7 @@ function loadPage(currentLink, page) {
     let http = new XMLHttpRequest();
 
     http.onload = function () {
+
         // paste response html
         document.querySelector('.wrapper').innerHTML = this.response;
 

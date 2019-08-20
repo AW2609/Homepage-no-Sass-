@@ -87,7 +87,7 @@ main {
     main .icons a {
       padding: 0.4rem;
       font-size: 1.5rem;
-      color: var(--primary-letter-color)
+      color: var(--primary-letter-color);
     }
 
       main .icons a:hover {
@@ -124,7 +124,8 @@ div.theme-buttons {
   }
 
     div.theme-buttons .theme-btn.btn-light {
-      background: 'f4f4f4';
+      background: #e2e2e2;
+      color: #111;
       border: 1px solid black;
     }
 
